@@ -1,0 +1,7 @@
+library(httr)
+oauth_endpoints("github")
+findoutcredate <- oauth_app("github", "26a79e3c7d3135bbaaf3")
+github_token <- oauth2.0_token(oauth_endpoints("github"),findoutcredate)
+req <- GET("https://api.github.com/users/jtleek/repos", config(token = github_token))
+stop_for_status(req)
+content(req)
